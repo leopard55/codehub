@@ -16,4 +16,5 @@ public interface BeanFactory {
      */
     <T> T getBean(Class<T> clz);
 
+    void replace(Class<?> clz, Object proxy);
 }

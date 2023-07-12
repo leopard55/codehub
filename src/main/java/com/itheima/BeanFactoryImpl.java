@@ -44,4 +44,9 @@ public class BeanFactoryImpl implements BeanFactory {
         Object obj = map.get(clz);
         return clz.cast(obj);
     }
+
+    @Override
+    public void replace(Class<?> clz, Object proxy) {
+        map.put(clz, proxy);
+    }
 }
