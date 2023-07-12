@@ -26,4 +26,14 @@ public class MyConfig {
             return r;
         };
     }
+
+    @Aspect("execution(* bar())")
+    public static Advice advice3() {
+        return pjp -> {
+            System.out.println("Advice3.before()...");
+            Object r = pjp.proceed();
+            System.out.println("Advice3.after()...");
+            return r;
+        };
+    }
 }

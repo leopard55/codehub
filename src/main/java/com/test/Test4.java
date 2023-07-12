@@ -15,7 +15,10 @@ public class Test4 {
 
         A a = beanFactory.getBean(A.class);
         System.out.println(a.getClass());
-
         a.foo();
+
+//        B b = beanFactory.getBean(B.class);
+        B b = a.getB();
+        b.bar();
     }
 }
