@@ -21,11 +21,19 @@ public class BeanFactoryImpl implements BeanFactory {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-            map.forEach((clz,bean)->{
+            // 原始对象 a， b
+            /*map.forEach((clz,bean)->{
+                // a -> a 代理 -> a @Autowired -> a @Resource
                 for (BeanPostProcessor beanPostProcessor : list) {
                     beanPostProcessor.enhance(this, bean);
                 }
-            });
+            });*/
+
+            for (BeanPostProcessor beanPostProcessor : list) {
+                for (Object bean : map.values()) {
+                    beanPostProcessor.enhance(this, bean);
+                }
+            }
         }
     }
 
