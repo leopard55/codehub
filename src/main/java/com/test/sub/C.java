@@ -1,7 +1,7 @@
-package com.test;
+package com.test.sub;
 
 import com.itheima.Component;
 
 @Component
-public class B {
+public class C {
 }

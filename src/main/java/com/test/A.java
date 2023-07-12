@@ -1,7 +1,9 @@
 package com.test;
 
 import com.itheima.Autowired;
+import com.itheima.Component;
 
+@Component
 public class A {
     @Autowired
     B b;

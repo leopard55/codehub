@@ -8,6 +8,18 @@ public class BeanFactoryImpl implements BeanFactory {
 
     private Map<Class<?>, Object> map = new HashMap<>(); // singletonObjects
 
+    public BeanFactoryImpl(Class<?> config) {
+        if (config.isAnnotationPresent(ComponentScan.class)) {
+            ComponentScan cs = config.getAnnotation(ComponentScan.class);
+            String packageName = cs.value();
+            try {
+                ComponentScanner.scan(this, packageName);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
     @Override
     public void register(Class<?> clz) {
         try {
