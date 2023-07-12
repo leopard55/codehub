@@ -1,14 +1,18 @@
 package com.itheima;
 
-import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BeanFactoryImpl implements BeanFactory {
 
     private Map<Class<?>, Object> map = new HashMap<>(); // singletonObjects
 
-    public BeanFactoryImpl(Class<?> config) {
+    private List<BeanPostProcessor> list = new ArrayList<>();
+
+    public BeanFactoryImpl(Class<?> config, BeanPostProcessor... processors) {
+        list.addAll(List.of(processors));
         if (config.isAnnotationPresent(ComponentScan.class)) {
             ComponentScan cs = config.getAnnotation(ComponentScan.class);
             String packageName = cs.value();
@@ -17,6 +21,11 @@ public class BeanFactoryImpl implements BeanFactory {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
+            map.forEach((clz,bean)->{
+                for (BeanPostProcessor beanPostProcessor : list) {
+                    beanPostProcessor.enhance(this, bean);
+                }
+            });
         }
     }
 
@@ -34,21 +43,5 @@ public class BeanFactoryImpl implements BeanFactory {
     public <T> T getBean(Class<T> clz) {
         Object obj = map.get(clz);
         return clz.cast(obj);
-    }
-
-    @Override
-    public void autowired(Object a) {
-        for (Field field : a.getClass().getDeclaredFields()) {
-            if (field.isAnnotationPresent(Autowired.class)) {
-                Class<?> type = field.getType();
-                Object b = map.get(type);
-                try {
-                    field.setAccessible(true);
-                    field.set(a, b); // 依赖注入
-                } catch (IllegalAccessException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
     }
 }

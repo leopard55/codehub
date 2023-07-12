@@ -16,9 +16,4 @@ public interface BeanFactory {
      */
     <T> T getBean(Class<T> clz);
 
-    /**
-     * 依赖注入方法
-     * @param obj 被依赖注入的对象
-     */
-    void autowired(Object obj);
 }

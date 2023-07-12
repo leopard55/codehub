@@ -1,12 +1,15 @@
 package com.test;
 
+import com.itheima.AutowiredBeanPostProcessor;
 import com.itheima.BeanFactory;
 import com.itheima.BeanFactoryImpl;
+import com.itheima.ResourceBeanPostProcessor;
 import com.test.sub.C;
 
 public class Test1 {
     public static void main(String[] args) {
-        BeanFactory beanFactory = new BeanFactoryImpl(MyConfig.class);
+        BeanFactory beanFactory = new BeanFactoryImpl(MyConfig.class,
+                new ResourceBeanPostProcessor(), new AutowiredBeanPostProcessor());
 
 
         A a = beanFactory.getBean(A.class);
@@ -16,7 +19,7 @@ public class Test1 {
         System.out.println(b);
         System.out.println(c);
 
-//        beanFactory.autowired(a);
-//        System.out.println(a.getB());
+        System.out.println("---------------");
+        System.out.println(a.getB());
     }
 }
