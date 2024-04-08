@@ -1,7 +1,7 @@
 package com.itheima.aop;
 
-import com.itheima.BeanFactory;
-import com.itheima.BeanPostProcessor;
+import com.itheima.ioc.BeanFactory;
+import com.itheima.ioc.BeanPostProcessor;
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;

@@ -1,6 +1,6 @@
 package com.itheima.aop;
 
-import com.test.MyConfig;
+import com.itheima.test.MyConfig;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 
 import java.lang.reflect.InvocationTargetException;
