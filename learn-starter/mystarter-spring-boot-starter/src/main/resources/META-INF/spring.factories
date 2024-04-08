@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.leopard.config.HelloServiceAutoConfiguration,\
+    com.leopard.config.MyLogAutoConfiguration
