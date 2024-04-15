@@ -7,31 +7,19 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.5.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
-
-    <groupId>org.leopard</groupId>
-    <artifactId>my-app</artifactId>
+    <groupId>cn.itcast</groupId>
+    <artifactId>springevent_demo</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--导入自定义starter-->
         <dependency>
-            <groupId>org.leopard</groupId>
-            <artifactId>mystarter-spring-boot-starter</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.2.2</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
-
-
 </project>

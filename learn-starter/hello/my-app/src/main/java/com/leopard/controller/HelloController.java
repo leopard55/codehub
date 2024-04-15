@@ -1,4 +1,4 @@
-package com.leopard.Controller;
+package com.leopard.controller;
 
 import com.leopard.log.MyLog;
 import com.leopard.service.HelloService;
